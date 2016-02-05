@@ -105,7 +105,9 @@ module.exports = function(RED) {
                     "channel": message.channel,
                     "fromUser": fromUser.name
                 };
-
+		if (message.attachments) {
+		msg.slackAttachments = message.attachments;
+		}
                 node.send(msg);
             }
 
