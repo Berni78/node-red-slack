@@ -103,15 +103,11 @@ module.exports = function(RED) {
                     "text": message.text,
                     "channelName": slackChannel.name,
                     "channel": message.channel,
-                    "fromUser": fromUser.name
+                    "fromUser": fromUser.name,
+                    "ts": message.ts,
+                    "attachments": message.attachments
                 };
-		if (message.attachments) {
-		msg.slackAttachments = message.attachments;
-            	if (slackDebug) { node.log("IN: Attachments is there"); }
-		} else {
-		msg.slackAttachments = {};
-            	if (slackDebug) { node.log("IN: No Attachments"); }
-		}
+		
                 node.send(msg);
             }
 
